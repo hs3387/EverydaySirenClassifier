@@ -14,23 +14,39 @@
 
 </div>     
 
-## Fashion Recommender
-The proliferation of online shopping platforms has made it easier for consumers to shop from the comfort of their homes or on the go, and swiftly too! But the sheer volume of products available can be overwhelming. Traditional keyword-based text searches can often return irrelevant or inaccurate results, making it difficult for users to find clothing items that match their preferences. This proposal presents a novel approach that uses image recognition and pattern matching to revolutionize the online shopping experience, providing users with a more convenient and efficient way to find clothing items they like.
 
-
-## Directory setup
+## File Structure
 <!---------------------------------------------------------------------------------------------------------------->
 The structure of the repository is as follows: 
 
-- `assets/`: Contains the html, js, css file used for out application
-- `fashionRecommender-swagger.yaml` : Contains the basic API endpoints planned to be implemented
 
----
+- model.h
 
-## Dependencies
-- Python 3.7
-- HTML, CSS, JavaScript
-- YAML
-- Under development... 
+-model.tflite
 
-As of 3/8/23, this is the clickable prototype
+- Data
+	- The folder has the three subfolders as follows
+		- ambulance
+		- firetruck
+		- traffic
+	- The files in those folder are split into
+		- png files that represent the spectrograms of the whole audios
+		- wav files with no prefix (orginal dataset files)
+		- wav files with a prefix '[16]' signifying its resampled rate 16kHz
+		- wav files with a prefix '[38]' signifying its recreted oudness of -38LUFS
+		- wav files with a prefix '[chunk]' which are the same samples but with different durations
+- Full Model
+	- 1st Model
+		- simple_audio_adapt.ipynb
+		- fullSizeTFModel.zip
+	- 2nd Model
+		- updated_data_model.ipynb
+		- Full Size TF Model.zip
+		
+- UI Mockups
+	- anrdoid auto mockup.jpg
+	- carplay_mockup.jpg
+	- An important direction for further development of this siren classifier is to utilize it as an aid for hearing-impaired drivers. By leveraging the capabilities of the platforms like the Arduino Nano 33 BLE Sense, we can create a solution that provides visual feedback to represent approaching sirens. This solution can be implemented as a standalone product or as an add-on to existing systems such as the Head-Up Display (HUD) or the navigation and entertainment system of cars. In the standalone product approach visual indicators such as LEDs or symbols on a graphical display can represent different siren types. As a sirened vehicle approaches the driver, the corresponding visual indicator would activate, providing the necessary alert to the hearing-impaired driver. Alternatively, integrating this into the car's HUD or navigation system would involve developing interfaces that communicate with a car and would enhance the overall user experience by providing a seamless and intuitive interface. Moreover, given the proliferation of Smartphones for navigation and the use of highly programmable applications like systems, such as Google Maps, Android Auto, and Apple CarPlay, building an API that works with these popular applications and systems would enable the ESC system to send signals to and trigger visual responses like flashing symbols on the user interface. The onboard communication protocols of the Arduino Nano, like BLE and Zigbee, both widely used in various applications, can be utilized to establish these integrations. To improve cost-effectiveness, building our model as a TFLM model for the ESP32, a board known for its affordability as well as versatility, can support a wider variety of integrations and make the solution more accessible to a larger user base. Additional training on the system can also add features that would allow computing factors like which direction the siren is originating from and even detect if it is approaching or moving away. By focusing on these use case scenarios and exploring integration options, we can maximize the impact of our ESC system and provide valuable support for hearing-impaired drivers, enhancing their safety and driving experience.
+
+		
+	
