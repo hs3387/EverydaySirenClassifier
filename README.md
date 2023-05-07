@@ -22,7 +22,7 @@ The structure of the repository is as follows:
 
 - model.h
 
--model.tflite
+- model.tflite
 
 - Data
 	- The folder has the three subfolders as follows
