@@ -1,7 +1,3 @@
-# EverydaySirenClassifier
-
-
-##Files
 
 <div align="center">
 
@@ -22,7 +18,7 @@ The structure of the repository is as follows:
 
 - model.h
 
-- model.tflite
+- model.tflite: TFLite intermediary model file
 
 - Data
 	- The folder has the three subfolders as follows
