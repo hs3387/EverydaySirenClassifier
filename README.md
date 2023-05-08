@@ -17,7 +17,6 @@ The structure of the repository is as follows:
 
 
 - ArduReader.py: A Python handler script that connects to the Arduino and listens in on the classifications it makes, to present this in a user readable format. The script displays the results in two ways - an immediate update for every classification as well as a moving average of the last 5 classifications updated every second. This averaging function smoothens out small misclassifications and spikes, thus presenting the readings in a more user-friendly way.
-- updated_data_model.ipynb: Python Jupyter notebook that decribes and builds the full sized TF model with stepwise documentaion. 
 - model.tflite: TFLite intermediary model file
 	- This model file was created by converting the original trained model obtained from the Jupyter notebook into a smaller model using TFLite.
 - model.h: C Binaries TFLM Model for Arduino 	
