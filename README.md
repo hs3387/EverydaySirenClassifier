@@ -17,10 +17,11 @@ The structure of the repository is as follows:
 
 
 - ArduReader.py: A Python handler script that connects to the Arduino and listens in on the classifications it makes, to present this in a user readable format. The script displays the results in two ways - an immediate update for every classification as well as a moving average of the last 5 classifications updated every second. This averaging function smoothens out small misclassifications and spikes, thus presenting the readings in a more user-friendly way.
-
-- model.h: C Binaries TFLM Model for Arduino 
-
+- updated_data_model.ipynb: Python Jupyter notebook that decribes and builds the full sized TF model with stepwise documentaion. 
 - model.tflite: TFLite intermediary model file
+	- This model file was created by converting the original trained model obtained from the Jupyter notebook into a smaller model using TFLite.
+- model.h: C Binaries TFLM Model for Arduino 	
+	- The TFlite model is further converted into this .h file allowing the arduino library to read it.
 
 - Data
 	- The folder has the three subfolders as follows
@@ -48,9 +49,29 @@ The structure of the repository is as follows:
 
 - Arduino Code
 	- version 1
-		- This was the first version we attempted using a modified version of an existing library code. While we managed to get this working as a siren classifier, it failed to differentiate between firetruck and ambulance sounds effectively.
+	- This was the first version we attempted using a modified version of an existing library code. While we managed to get this working as a siren classifier, it failed to differentiate between firetruck and ambulance sounds effectively.
+		- embedded_ai.ino - Main ino file that uses the library code along with a pretrained model to run a continuous audio inference by taking the arduino's microphone as input, extracting the spectrogram features from it, running the pretrained model in a feed forward manner and displaying the outcome of the model as a probablity classification of the three classes: Ambulance, Firetruck and Traffic.
+		- Following are library files needed to run this main file:
+		- arduino_audio_provider.cpp
+		- arduino_command_responder.cpp
+		- arduino_main.cpp
+		- audio_provider.h
+		- command_responder.h
+		- feature_provider.cpp
+		- feature_provider.h
+		- main_functions.h
+		- micro_features_micro_features_generator.cpp
+		- micro_features_micro_features_generator.h
+		- micro_features_micro_model_settings.cpp
+		- micro_features_micro_model_settings.h
+		- micro_features_model.cpp
+		- micro_features_model.h
+		- recognize_commands.cpp
+		- recognize_commands.h
 	- version 2
-		- This version was created using the Edge Impulse framework and includes a model we trained using siren sounds recorded using the ble sense's microphone. This version is much better at differentiating between the two sirens and runs more efficiently as it uses a much smaller model.
+	- This version was created using the Edge Impulse framework and includes a model we trained using siren sounds recorded using the ble sense's microphone. This version is much better at differentiating between the two sirens and runs more efficiently as it uses a much smaller model.
+		- embedded_ai_final_2.ino - Main ino file that uses the library code along with a pretrained model to run a continuous audio inference by taking the arduino's microphone as input, extracting the spectrogram features from it, running the pretrained model in a feed forward manner and displaying the outcome of the model as a probablity classification of the three classes: Ambulance, Firetruck and Traffic.
+		- arduino_library_code.zip - ZIP file that can be directly imported by the arduino IDE and contains various functions that allow the main ino file to run.
 		
 ## Instructions
 	- For running the version 1, you need to install the Arduino_TensorFlowLite library followed by simply compiling and uploading the embedded_ai.ino using the Arduino IDE.
